@@ -1,10 +1,10 @@
 package MyLinkedList;
 
-public class MyNode<k> {
+//uc2
+public class MyNode<k> implements INode<k> {
 
-	// uc1
 	private k key;
-	private MyNode<k> next;
+	private INode<k> next;
 
 	public MyNode(k key) {
 		super();
@@ -12,12 +12,25 @@ public class MyNode<k> {
 		this.next = null;
 	}
 
-	public MyNode<k> getNext() {
-		return next;
+	@Override
+	public k getKey() {
+		return key;
 	}
 
-	public void setNext(MyNode<k> next) {
+	@Override
+	public void setKey(k key) {
+		this.key = key;
+	}
+
+	@Override
+	public void setNext(INode<k> next) {
+
 		this.next = next;
+	}
+
+	@Override
+	public INode<k> getNext() {
+		return next;
 	}
 
 }
