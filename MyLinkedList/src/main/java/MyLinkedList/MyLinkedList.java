@@ -35,7 +35,7 @@ public class MyLinkedList<k> {
 		}
 		if (this.tail == null) {
 			this.tail = myNode;
-		} else {
+		} else { 
 			this.tail.setNext(myNode);
 			this.tail = myNode;
 		}

@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class MyNodeTest {
-
+ 
 	// uc2
 	@Test
 	public void given3NumbersToAdd_WhenAnlyse_ShouldReturnTrue() {
