@@ -35,10 +35,18 @@ public class MyLinkedList<k> {
 		}
 		if (this.tail == null) {
 			this.tail = myNode;
-		} else { 
+		} else {
 			this.tail.setNext(myNode);
 			this.tail = myNode;
 		}
+	}
+
+	// uc5
+	public INode<k> pop() {
+
+		INode<k> tempNode = this.head;
+		this.head = tempNode.getNext();
+		return tempNode;
 	}
 
 }
