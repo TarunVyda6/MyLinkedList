@@ -49,4 +49,17 @@ public class MyLinkedList<k> {
 		return tempNode;
 	}
 
+	// uc6
+	public INode<k> popLast() {
+
+		INode<k> prevNode = head;
+		while (!prevNode.getNext().equals(tail)) {
+			prevNode = prevNode.getNext();
+		}
+		INode<k> tempNode = tail;
+		prevNode.setNext(null);
+		tail = prevNode;
+		return tempNode;
+	}
+
 }
