@@ -42,6 +42,13 @@ public class MyLinkedList<k> {
 		}
 	}
 
+	// uc4 insert new node after particular node
+	public void insert(INode<k> myNode, INode<k> newNode) {
+		INode<k> tempNode = myNode.getNext();
+		myNode.setNext(newNode);
+		newNode.setNext(tempNode);
+	}
+
 	// uc5 remove the first element present and return its value
 	public INode<k> pop() {
 
@@ -65,14 +72,21 @@ public class MyLinkedList<k> {
 
 	// uc7 searches for an element if present returns true and if absent returns
 	// false
-	public boolean search(k key) {
+	public INode<k> search(k key) {
 		INode<k> temp = head;
 		while (temp != tail) {
 			if (temp.getKey() == key)
-				return true;
+				return temp;
 			temp = temp.getNext();
 		}
-		return false;
+		return null;
+	}
+
+	// uc8
+	public void insert(k prevKey, k newKey) {
+		INode<k> prevNode = search(prevKey);
+		MyNode<k> newNode = new MyNode<>(newKey);
+		insert(prevNode, newNode);
 	}
 
 }

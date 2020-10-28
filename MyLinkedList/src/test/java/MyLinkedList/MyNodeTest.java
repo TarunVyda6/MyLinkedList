@@ -7,7 +7,7 @@ public class MyNodeTest {
 
 	// uc2
 	@Test
-	public void given3NumbersToAdd_WhenAnlyse_ShouldReturnTrue() {
+	public void given3NumbersToAdd_WhenAnalyse_ShouldReturnTrue() {
 
 		MyNode<Integer> myFirstNode = new MyNode<>(70);
 		MyNode<Integer> mySecondNode = new MyNode<>(30);
@@ -16,7 +16,6 @@ public class MyNodeTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.add(mySecondNode);
 		myLinkedList.add(myThirdNode);
-
 		boolean result = myLinkedList.head.equals(myThirdNode) && myLinkedList.tail.equals(myFirstNode);
 		Assert.assertEquals(true, result);
 
@@ -24,7 +23,7 @@ public class MyNodeTest {
 
 	// uc3
 	@Test
-	public void given3NumbersToAppend_WhenAnlyse_ShouldReturnTrue() {
+	public void given3NumbersToAppend_WhenAnalyse_ShouldReturnTrue() {
 
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
 		MyNode<Integer> mySecondNode = new MyNode<>(30);
@@ -33,7 +32,6 @@ public class MyNodeTest {
 		myLinkedList.append(myFirstNode);
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-
 		boolean result = myLinkedList.tail.equals(myThirdNode) && myLinkedList.head.equals(myFirstNode);
 		Assert.assertEquals(true, result);
 
@@ -41,7 +39,7 @@ public class MyNodeTest {
 
 	// uc5
 	@Test
-	public void givenNumberToPopFirst_WhenAnlyse_ShouldReturnTrue() {
+	public void givenNumberToPopFirst_WhenAnalyse_ShouldReturnTrue() {
 
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
 		MyNode<Integer> mySecondNode = new MyNode<>(30);
@@ -58,7 +56,7 @@ public class MyNodeTest {
 
 	// uc6
 	@Test
-	public void givenNumberToPopLast_WhenAnlyse_ShouldReturnTrue() {
+	public void givenNumberToPopLast_WhenAnalyse_ShouldReturnTrue() {
 
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
 		MyNode<Integer> mySecondNode = new MyNode<>(30);
@@ -75,7 +73,7 @@ public class MyNodeTest {
 
 	// uc7
 	@Test
-	public void givenPresentNumberToSearch_WhenAnlyse_ShouldReturnTrue() {
+	public void givenPresentNumberToSearch_WhenAnalyse_ShouldReturnTrue() {
 
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
 		MyNode<Integer> mySecondNode = new MyNode<>(30);
@@ -84,13 +82,13 @@ public class MyNodeTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		Assert.assertTrue(myLinkedList.search(30));
+		Assert.assertEquals(mySecondNode, myLinkedList.search(30));
 
 	}
 
 	// uc7
 	@Test
-	public void givenAbsentNumberToSearch_WhenAnlyse_ShouldReturnFalse() {
+	public void givenAbsentNumberToSearch_WhenAnalyse_ShouldReturnNull() {
 
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
 		MyNode<Integer> mySecondNode = new MyNode<>(30);
@@ -99,7 +97,25 @@ public class MyNodeTest {
 		myLinkedList.add(myFirstNode);
 		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		Assert.assertFalse(myLinkedList.search(50));
+		Assert.assertEquals(null, myLinkedList.search(50));
+
+	}
+
+	// uc8
+	@Test
+	public void insertingKeyBetween2Numbers_WhenAnalyse_ShouldReturnTrue() {
+
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		myLinkedList.insert(30, 40);
+		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
+				&& myLinkedList.tail.equals(myThirdNode) && myLinkedList.head.getNext().getNext().getKey().equals(40);
+		Assert.assertTrue(result);
 
 	}
 }
