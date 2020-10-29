@@ -1,7 +1,7 @@
 package MyLinkedList;
 
 //uc2
-public class MyLinkedList<k> {
+public class MyLinkedList<k extends Comparable<k>> {
 
 	INode<k> head;
 	INode<k> tail;
@@ -82,14 +82,14 @@ public class MyLinkedList<k> {
 		return null;
 	}
 
-	// uc8
+	// uc8 insert node after a specified node
 	public void insert(k prevKey, k newKey) {
 		INode<k> prevNode = search(prevKey);
 		MyNode<k> newNode = new MyNode<>(newKey);
 		insert(prevNode, newNode);
 	}
 
-	// uc9
+	// uc9 Deletes a specified node using key
 	public void delete(k key) {
 		INode<k> nodeToDelete = search(key);
 		INode<k> nextNode = nodeToDelete.getNext();
@@ -100,6 +100,7 @@ public class MyLinkedList<k> {
 		prevNode.setNext(nextNode);
 	}
 
+	// finds the size of the list
 	public int size() {
 		int size = 0;
 		INode<k> tempNode = head;
@@ -109,4 +110,43 @@ public class MyLinkedList<k> {
 		}
 		return size + 1;
 	}
+
+	/*
+	 * ascending order sorting will occur while adding the element to the LinkedList
+	 */
+	public void addSorted(INode<k> newNode) {
+		INode<k> current;
+		INode<k> prevNode;
+
+		if (this.head == null) {
+			this.head = newNode;
+			tail = head;
+			return;
+		}
+		if (this.tail == null) {
+			this.tail = newNode;
+			head = tail;
+			return;
+		}
+		if (head == null || head.getKey().compareTo(newNode.getKey()) > 0) {
+			newNode.setNext(head);
+			head = newNode;
+			return;
+		}
+		if (tail != null && tail.getKey().compareTo(newNode.getKey()) < 0) {
+			// append(newNode);
+			tail.setNext(newNode);
+			tail = newNode;
+			return;
+		}
+		prevNode = head;
+		current = head;
+		while (current.getNext() != null && current.getKey().compareTo(newNode.getKey()) < 0) {
+			prevNode = current;
+			current = current.getNext();
+		}
+		newNode.setNext(prevNode.getNext());
+		prevNode.setNext(newNode);
+	}
+
 }

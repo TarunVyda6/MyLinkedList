@@ -153,4 +153,20 @@ public class MyNodeTest {
 
 	}
 
+	// uc10
+	@Test
+	public void given3NumbersForOrderlyAdding_WhenAnalyse_ShouldReturnTrue() {
+
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.addSorted(myFirstNode);
+		myLinkedList.addSorted(mySecondNode);
+		myLinkedList.addSorted(myThirdNode);
+		Assert.assertEquals(mySecondNode, myLinkedList.head);
+		Assert.assertEquals(myThirdNode, myLinkedList.tail);
+		Assert.assertEquals(myFirstNode, myLinkedList.head.getNext());
+
+	}
 }
