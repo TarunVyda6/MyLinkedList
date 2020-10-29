@@ -118,4 +118,39 @@ public class MyNodeTest {
 		Assert.assertTrue(result);
 
 	}
+
+	// uc9
+	@Test
+	public void deletingKey_WhenAnalyse_ShouldReturnTrue() {
+
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyNode<Integer> myFourthNode = new MyNode<>(40);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(myFirstNode);
+		myLinkedList.append(myFourthNode);
+		myLinkedList.append(myThirdNode);
+		myLinkedList.insert(myFourthNode, mySecondNode);
+		myLinkedList.delete(30);
+		boolean result = myLinkedList.head.equals(myFirstNode)
+				&& myLinkedList.head.getNext().getNext().equals(myThirdNode);
+		Assert.assertTrue(result);
+
+	}
+
+	@Test
+	public void given3NumbersForSize_WhenAnalyse_ShouldReturnTrue() {
+
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		Assert.assertEquals(3, myLinkedList.size());
+
+	}
+
 }

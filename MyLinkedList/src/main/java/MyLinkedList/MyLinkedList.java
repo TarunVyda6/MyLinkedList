@@ -89,4 +89,24 @@ public class MyLinkedList<k> {
 		insert(prevNode, newNode);
 	}
 
+	// uc9
+	public void delete(k key) {
+		INode<k> nodeToDelete = search(key);
+		INode<k> nextNode = nodeToDelete.getNext();
+		INode<k> prevNode = head;
+		while (!prevNode.getNext().equals(nodeToDelete)) {
+			prevNode = prevNode.getNext();
+		}
+		prevNode.setNext(nextNode);
+	}
+
+	public int size() {
+		int size = 0;
+		INode<k> tempNode = head;
+		while (!tempNode.equals(tail)) {
+			tempNode = tempNode.getNext();
+			size++;
+		}
+		return size + 1;
+	}
 }
